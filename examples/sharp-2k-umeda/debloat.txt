@@ -1,0 +1,24 @@
+# SHARP 2K Smart TV (built by Skyworth, device umeda, MediaTek), Malaysia
+# Android TV 11 (SDK 30), firmware RTM9.241015.157
+# Home was launcherx. First install rolled back: setupwraith took Home; disabling it and
+# re-running launcher/build-and-install.sh fixed it.
+# Keep: all mediatek.* (HDMI, tuner), smartdevice.bleconnectservice (Bluetooth remote),
+# smartdevice.factory, tv.remote.service, rukeyboard.
+com.google.android.tungsten.setupwraith
+
+# Store demo, telemetry, auto-installs
+com.coocaa.demonow.lightining
+fusion.android.tv.demo
+android.autoinstalls.config.google.gtvpai
+com.smartdevice.recordactivation
+com.smartdevice.aftersale
+com.google.android.feedback
+com.Smartdevice.emanual
+
+# Streaming apps this household does not use (personal choice; remove lines to keep them)
+com.google.android.youtube.tvmusic
+com.amazon.amazonvideo.livingroom
+com.apple.atve.androidtv.appletv
+com.wbd.stream
+in.startv.hotstar.dplus.tv
+com.iqiyi.i18n.tv

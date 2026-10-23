@@ -659,6 +659,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     @Override
     protected void onResume() {
         super.onResume();
+        // Masa Skrin: keep counting, and while today's time is used up Home leads straight back to the lock.
+        ScreenTimeService.start(this);
+        if (ScreenTime.isLocked(this)) LockActivity.show(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             registerReceiver(packageReceiver, packageFilter, Context.RECEIVER_NOT_EXPORTED);
         } else {

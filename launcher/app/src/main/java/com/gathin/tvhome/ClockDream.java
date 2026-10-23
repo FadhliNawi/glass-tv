@@ -25,6 +25,9 @@ import java.util.Random;
  * 380 units tall.
  */
 public class ClockDream extends DreamService {
+    /** While the clock is showing; Masa Skrin does not count this as watching (ScreenTimeService). */
+    static volatile boolean dreaming;
+
 
     private static final long MOVE_MS = 60_000L;
     private static final float SCREEN_UNITS = 380f;
@@ -104,6 +107,7 @@ public class ClockDream extends DreamService {
     @Override
     public void onDreamingStarted() {
         super.onDreamingStarted();
+        dreaming = true;
         content.setAlpha(0f);
         content.post(() -> {
             placeClock();
@@ -115,6 +119,7 @@ public class ClockDream extends DreamService {
 
     @Override
     public void onDreamingStopped() {
+        dreaming = false;
         handler.removeCallbacks(tick);
         face.stop();
         super.onDreamingStopped();
@@ -122,6 +127,7 @@ public class ClockDream extends DreamService {
 
     @Override
     public void onDetachedFromWindow() {
+        dreaming = false;
         handler.removeCallbacks(tick);
         super.onDetachedFromWindow();
     }
